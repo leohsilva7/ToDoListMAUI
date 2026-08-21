@@ -4,7 +4,7 @@ namespace ToDoList.Services.Interfaces;
 
 public interface ITaskService
 {
-    ICollection<Tarefa> GetTasks();
-    void AddTask(Tarefa task);
-    void DeleteTask(Tarefa task);
+    Task<ICollection<Tarefa>> GetTasks();
+    Task AddTask(Tarefa task);
+    Task DeleteTask(Tarefa task);
 }

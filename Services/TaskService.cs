@@ -23,4 +23,19 @@ public class TaskService : ITaskService
         var currentTask = _tasks.FirstOrDefault(t => t.Id == task.Id);
         if (currentTask != null) _tasks.Remove(currentTask);
     }
+
+    Task<ICollection<Tarefa>> ITaskService.GetTasks()
+    {
+        throw new NotImplementedException();
+    }
+
+    Task ITaskService.AddTask(Tarefa task)
+    {
+        throw new NotImplementedException();
+    }
+
+    Task ITaskService.DeleteTask(Tarefa task)
+    {
+        throw new NotImplementedException();
+    }
 }

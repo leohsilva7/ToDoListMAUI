@@ -18,6 +18,10 @@ public partial class NewTaskViewModel : ObservableObject
     [RelayCommand]
     private async Task AddTask()
     {
+        if (Nome == "")
+        {
+            return;
+        }
         var newTask = new Tarefa
         {
             Name = Nome,

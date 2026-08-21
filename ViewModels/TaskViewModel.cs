@@ -18,15 +18,9 @@ public partial class TaskViewModel : ObservableObject
         _tasks = new ObservableCollection<Tarefa>();
     }
 
-    public TaskViewModel(ITaskService taskService, ObservableCollection<Tarefa> tasks)
+    public async Task LoadTasks()
     {
-        _taskService = taskService;
-        _tasks = tasks;
-    }
-
-    public void LoadTasks()
-    {
-        var tasks = _taskService.GetTasks();
+        var tasks = await _taskService.GetTasks();
         Tasks.Clear();
         foreach (var task in tasks) Tasks.Add(task);
     }
