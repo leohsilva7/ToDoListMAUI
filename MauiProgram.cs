@@ -22,7 +22,7 @@ public static class MauiProgram
 #if DEBUG
         builder.Logging.AddDebug();
 #endif
-        builder.Services.AddSingleton<ITaskService, TaskService>();
+        builder.Services.AddSingleton<ITaskService, TaskServiceSqlite>();
         builder.Services.AddTransient<TaskViewModel>();
         builder.Services.AddTransient<TasksPage>();
         builder.Services.AddTransient<NewTaskViewModel>();
