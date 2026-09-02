@@ -17,6 +17,7 @@
                             <CheckBox Grid.Column="0" IsChecked="{Binding IsConcluded}" />
                             <Label Grid.Column="1" Text="{Binding Name}" VerticalOptions="Center" />
                             <Button Text="X" Grid.Column="2" Command="{Binding Source={RelativeSource AncestorType={x:Type vm:TaskViewModel}}, Path=RemoveTaskCommand}" CommandParameter="{Binding .}"/>
+                            <Button Grid.Column="3" Command="{Binding Source={RelativeSource AncestorType={x:Type vm:TaskViewModel}}, Path=NavigateEditTaskCommand}" CommandParameter="{Binding .}" Text="Editar"/>
                         </Grid>
                     </Border>
                 </DataTemplate>

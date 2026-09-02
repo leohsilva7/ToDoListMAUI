@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="ToDoList.Views.EditTaskPage"
+             xmlns:vm="clr-namespace:ToDoList.ViewModels"
+             x:DataType="vm:EditTaskViewModel"
+             Title="Editar Tarefa">
+    <VerticalStackLayout>
+        <Label 
+            Text="Nome da Tarefa"
+            FontSize="18"/>
+        <Entry Text="{Binding TaskName}"/>
+        <Button Text="Salvar" Command="{Binding SaveCommand}"/>
+        <Button Text="Cancelar" Command="{Binding CancelCommand}"/>
+    </VerticalStackLayout>
+</ContentPage>

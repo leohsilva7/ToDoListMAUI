@@ -10,7 +10,7 @@ using ToDoList.Services.Interfaces;
 namespace ToDoList.Services
 {
     public class TaskServiceSqlite : ITaskService
-    {
+    {   
         private SQLiteAsyncConnection _connection;
         private async Task ConfigDB()
         {
@@ -38,6 +38,12 @@ namespace ToDoList.Services
         {
             await ConfigDB();
             await _connection.DeleteAsync(task);
+        }
+
+        public async Task UpdateTask(Tarefa task)
+        {
+            await ConfigDB();
+            await _connection.UpdateAsync(task);
         }
     }
 }

@@ -5,7 +5,6 @@ using ToDoList.Models;
 using ToDoList.Services.Interfaces;
 
 namespace ToDoList.ViewModels;
-
 public partial class TaskViewModel : ObservableObject
 {
     private readonly ITaskService _taskService;
@@ -24,7 +23,19 @@ public partial class TaskViewModel : ObservableObject
         Tasks.Clear();
         foreach (var task in tasks) Tasks.Add(task);
     }
-
+    [RelayCommand]
+    private async Task NavigateEditTask(Tarefa task)
+    {
+        if (task == null)
+        {
+            return;
+        }
+        var navigationParameter = new Dictionary<string, object>
+        {
+            { "TarefaObj", task }
+        };
+        await Shell.Current.GoToAsync("EditTaskPage", navigationParameter);
+    }
     [RelayCommand]
     private async Task NavigateNewTask()
     {
@@ -32,9 +43,13 @@ public partial class TaskViewModel : ObservableObject
     }
 
     [RelayCommand]
-    private void RemoveTask(Tarefa task)
+    private async Task RemoveTask(Tarefa task)
     {
-        _taskService.DeleteTask(task);
-        Tasks.Remove(task);
+        bool confirma = await Shell.Current.DisplayAlert("Excluir Tarefa", "Deseja realmente remover a tarefa", "Sim", "Não");
+        if (confirma)
+        {
+            await _taskService.DeleteTask(task);
+            Tasks.Remove(task);
+        }
     }
 }
